@@ -47,13 +47,13 @@ class HackingTool(object):
         if isinstance(options, list):
             self.OPTIONS = []
             if installable:
-                self.OPTIONS.append(('Install', self.install))
+                self.OPTIONS.append(('Yükle', self.install))
             if runnable:
-                self.OPTIONS.append(('Run', self.run))
+                self.OPTIONS.append(('Çalıştır', self.run))
             self.OPTIONS.extend(options)
         else:
             raise Exception(
-                "options must be a list of (option_name, option_fn) tuples")
+                "Seçenekler, (option_name, option_fn) çiftlerinin bir listeden oluşmalıdır.")
 
     def show_info(self):
         desc = self.DESCRIPTION
@@ -68,15 +68,15 @@ class HackingTool(object):
         for index, option in enumerate(self.OPTIONS):
             print(f"[{index + 1}] {option[0]}")
         if self.PROJECT_URL:
-            print(f"[{98}] Open project page")
-        print(f"[{99}] Back to {parent.TITLE if parent is not None else 'Exit'}")
-        option_index = input("Select an option : ")
+            print(f"[{98}] Projeyi Aç")
+        print(f"[{99}] {parent.TITLE if parent is not None else 'Çıkış'}'a dön")
+        option_index = input("Seçenek Seçin : ")
         try:
             option_index = int(option_index)
             if option_index - 1 in range(len(self.OPTIONS)):
                 ret_code = self.OPTIONS[option_index - 1][1]()
                 if ret_code != 99:
-                    input("\n\nPress ENTER to continue:")
+                    input("\n\nDevam etmek için ENTER tuşuna basın:")
             elif option_index == 98:
                 self.show_project_page()
             elif option_index == 99:
@@ -84,11 +84,11 @@ class HackingTool(object):
                     sys.exit()
                 return 99
         except (TypeError, ValueError):
-            print("Please enter a valid option")
-            input("\n\nPress ENTER to continue:")
+            print("Lütfen geçerli bir seçenek girin")
+            input("\n\nDevam etmek için ENTER tuşuna basın:")
         except Exception:
             print_exc()
-            input("\n\nPress ENTER to continue:")
+            input("\n\nDevam etmek için ENTER tuşuna basın:")
         return self.show_options(parent = parent)
 
     def before_install(self):
@@ -102,10 +102,10 @@ class HackingTool(object):
             self.after_install()
 
     def after_install(self):
-        print("Successfully installed!")
+        print("Başarıyla yüklendi!")
 
     def before_uninstall(self) -> bool:
-        """ Ask for confirmation from the user and return """
+        """ Kullanıcıdan onay isteyin ve döndürün. """
         return True
 
     def uninstall(self):
@@ -132,7 +132,7 @@ class HackingTool(object):
         pass
 
     def is_installed(self, dir_to_check = None):
-        print("Unimplemented: DO NOT USE")
+        print("İmplemente edilmemiş: KULLANMAYIN")
         return "?"
 
     def show_project_page(self):
@@ -157,22 +157,22 @@ class HackingToolsCollection(object):
         self.show_info()
         for index, tool in enumerate(self.TOOLS):
             print(f"[{index} {tool.TITLE}")
-        print(f"[{99}] Back to {parent.TITLE if parent is not None else 'Exit'}")
-        tool_index = input("Choose a tool to proceed: ")
+        print(f"[{99}] Önceki Menüye Dön {parent.TITLE if parent is not None else 'Çıkış'}")
+        tool_index = input("Seçiminizi yapın: ")
         try:
             tool_index = int(tool_index)
             if tool_index in range(len(self.TOOLS)):
                 ret_code = self.TOOLS[tool_index].show_options(parent = self)
                 if ret_code != 99:
-                    input("\n\nPress ENTER to continue:")
+                    input("\n\nDevam etmek için ENTER tuşuna basın:")
             elif tool_index == 99:
                 if parent is None:
                     sys.exit()
                 return 99
         except (TypeError, ValueError):
-            print("Please enter a valid option")
-            input("\n\nPress ENTER to continue:")
+            print("Lütfen geçerli bir seçenek girin")
+            input("\n\nDevam etmek için ENTER tuşuna basın:")
         except Exception:
             print_exc()
-            input("\n\nPress ENTER to continue:")
+            input("\n\nDevam etmek için ENTER tuşuna basın:")
         return self.show_options(parent = parent)

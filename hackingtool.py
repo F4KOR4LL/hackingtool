@@ -38,7 +38,7 @@ logo = """\033[33m
                                          ▀                                                                            ▀                             
                                     \033[34m[✔] https://github.com/Z4nzu/hackingtool   [✔]
                                     \033[34m[✔]            Version 1.1.0               [✔]
-                                    \033[91m[X] Please Don't Use For illegal Activity  [X]
+                                    \033[91m[X] Lütfen Yasadışı Bir Aktivite İçin Kullanmayın  [X]
 \033[97m """
 
 all_tools = [
@@ -64,7 +64,7 @@ all_tools = [
 
 
 class AllTools(HackingToolsCollection):
-    TITLE = "All tools"
+    TITLE = "Tüm Araçlar"
     TOOLS = all_tools
 
     def show_info(self):
@@ -79,25 +79,25 @@ if __name__ == "__main__":
                 os.system('clear')
                 # run.menu()
                 print("""
-                        [@] Set Path (All your tools will be installed in that directory)
-                        [1] Manual 
-                        [2] Default
+                        [@] Yol Belirle (Tüm araçlar belirtilen dizine yüklenecektir))
+                        [1] Manuel 
+                        [2] Ön Tanımlı Ayar
                 """)
                 choice = input("Z4nzu =>> ")
 
                 if choice == "1":
-                    inpath = input("Enter Path (with Directory Name) >> ")
+                    inpath = input("Girdiğiniz Yol (Dizin Adıyla Birlikte) >> ")
                     with open(fpath, "w") as f:
                         f.write(inpath)
-                    print("Successfully Set Path to: {}".format(inpath))
+                    print("Başarıyla Ayarlanan Yol: {}".format(inpath))
                 elif choice == "2":
                     autopath = "/home/hackingtool/"
                     with open(fpath, "w") as f:
                         f.write(autopath)
-                    print("Your Default Path Is: {}".format(autopath))
+                    print("Default Yolunuz: {}".format(autopath))
                     sleep(3)
                 else:
-                    print("Try Again..!!")
+                    print("Tekrar Deneyin..!!")
                     exit(0)
 
             with open(fpath) as f:
@@ -110,14 +110,14 @@ if __name__ == "__main__":
         # If not Linux and probably Windows
         elif system() == "Windows":
             print(
-                r"\033[91m Please Run This Tool On A Debian System For Best Results\e[00m"
+                r"\033[91m Lütfen Bu Aracı En İyi Sonuçlar İçin Debian Bir Sistemde Çalıştırın\e[00m"
             )
             sleep(2)
             webbrowser.open_new_tab("https://tinyurl.com/y522modc")
 
         else:
-            print("Please Check Your System or Open New Issue ...")
+            print("Lütfen Sisteminizi Kontrol Edin veya Yeni Bir Sorun Açın ...")
 
     except KeyboardInterrupt:
-        print("\nExiting ..!!!")
+        print("\nÇıkış Yapılıyor ..!!!")
         sleep(2)
