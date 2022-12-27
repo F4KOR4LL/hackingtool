@@ -29,12 +29,12 @@ echo "  ███    █▀      ███    █▀  ████████�
 echo "                                         ▀                                                                            ▀         ";
 
 echo -e "${BLUE} https://github.com/Z4nzu/hackingtool ${NC}"
-echo -e "${RED} [!] Bu Aracın Çalıştırılması ROOT Olarak Gerekir [!]${NC}\n"
-echo -e ${CYAN} "En İyi Seçeneği Seçin: \n"
+echo -e "${RED} [!] Bu Aracın Çalıştırılması için ROOT yetkisine Sahip Olmanız Gerekir [!]${NC}\n"
+echo -e ${CYAN} "En İyi Seçeneği Seçin(Kullandığınız İşletim Sistemi): \n"
 echo -e "${WHITE} [1] Kali Linux / Parrot-Os (apt)"
 echo -e "${WHITE} [2] Arch Linux (pacman)" # feature request #231 için Arch Linux desteği eklendi
 echo -e "${WHITE} [0] Çıkış "
-echo -n -e "Z4nzu >> "
+echo -n -e "Yanıtınızı Giriniz >> "
 read choice
 INSTALL_DIR="/usr/share/doc/hackingtool"
 BIN_DIR="/usr/bin/"
